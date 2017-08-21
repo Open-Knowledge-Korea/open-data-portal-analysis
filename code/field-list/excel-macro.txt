@@ -1,0 +1,12 @@
+# 필드명 일렬 나열시키는 excel 매크로 ( 필드 분석 시 필드 나열 파일 작성용,*** excel 에서 사용 *** )
+
+Sub TableToColumn()
+    Dim Rng As Range, LR As Long, i As Long
+    LR = Range("B" & Rows.Count).End(xlUp).Row # B = 시작 열
+    For i = 2 To LR
+        Set Rng = Range("B" & i, "E" & i)  # B / E 대신 <- 시작/종료열 
+        Range("A" & Rows.Count).End(xlUp)(2).Resize(Rng.Count) = Application.WorksheetFunction.Transpose(Rng) # A <- 작성열
+    Next i
+End Sub
+
+# 파일명은 단순 복사 붙여넣기로 진행
